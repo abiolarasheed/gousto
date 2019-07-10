@@ -1,0 +1,11 @@
+title = "WebGaff Format Specification"
+
+[tool.black]
+    line-length = 88
+    py36 = false
+    skip-string-normalization = false
+    check = false
+    diff = false
+#    quiet = false
+#    verbose = true
+
