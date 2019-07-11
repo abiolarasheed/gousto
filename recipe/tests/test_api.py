@@ -25,7 +25,7 @@ def recipe(db) -> Recipe:
 
 
 @pytest.fixture()
-def recipes(db) -> Recipe:
+def recipes(db) -> Union[QuerySet, List[Recipe]]:
     cuisines = ("asian", "british", "mexican", "italian")
     recipes = mixer.cycle(25).blend(
         Recipe, recipe_cuisine=(choice(cuisines) for _ in range(25))
