@@ -34,7 +34,7 @@ Then set your environment variables from your shell
 
 ```bash
 export SECRET_KEY=some text here
-export DJANGO_SETTINGS_MODULE=gousto.settings.production
+export DJANGO_SETTINGS_MODULE=gousto.settings.local
 ```
 
 Now we need to create our database then upload some data into it
@@ -97,6 +97,7 @@ pytest
 
 TODO
 =====
+- Add CI Integration
 - Add authentication
 - Integrate Django REST Swagger
 - Caching recipes
