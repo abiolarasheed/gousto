@@ -8,7 +8,6 @@ import pytest
 from rest_framework.reverse import reverse
 from rest_framework.test import APIRequestFactory
 
-# Using the standard RequestFactory API to create a form POST request
 from recipe.api import RecipeViewSet
 from recipe.models import Recipe
 
@@ -73,11 +72,10 @@ def test_recipe_list(
     # Just checking if there is even a page 2
     assert response.data.get("next") == page2
 
-    # test if full keys in the  response
+    # Get all the fields in the models
     recipe_fields = sorted([f.name for f in Recipe._meta.get_fields()])
-    # get all the fields in the models
 
-    # test that we get full recipe fields for every recipe
+    # Test that we get full recipe fields for every recipe
     recipe_json = response.data.get("results")[randrange(10)]
     assert sorted(recipe_json.keys()) == recipe_fields
 
