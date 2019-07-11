@@ -15,13 +15,16 @@ RUN addgroup --gid "$GID" "$USER" \
     --ingroup "$USER" \
     --no-create-home \
     --uid "$UID" \
-    "$USER"
+    "$USER" \
+    && apk add --no-cache bash
 
-COPY ./requirements/production.txt /tmp/requirements.txt
-RUN pip install --no-cache-dir -r /tmp/requirements.txt
+COPY ./requirements /tmp/requirements
+RUN pip install --no-cache-dir -r /tmp/requirements/production.txt \
+    && rm -rf /tmp/requirements
 
 COPY . /app/
-RUN chown -R $USER:$USER /app
+RUN chown -R $USER:$USER /app \
+    && chmod +x runserver.sh
 
 USER $USER
-CMD exec gunicorn gousto.wsgi:application --bind 0.0.0.0:8080 --workers 3
+CMD ["./runserver.sh"]
