@@ -21,7 +21,6 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "rest_framework",
-    "django_extensions",
     "django_filters",
     "recipe",
 ]
@@ -55,8 +54,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "gousto.wsgi.application"
-
-print(BASE_DIR)
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
