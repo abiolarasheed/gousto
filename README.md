@@ -27,7 +27,7 @@ install virtualenv and virtualenvwrapper then create your virtualenv
 Next install your requirements
 
 ```bash
-pip install -r requirments/local.txt
+pip install -r requirements/local.txt
 ```
 
 Then set your environment variables from your shell
@@ -54,6 +54,12 @@ Now we need to create our database then upload some data into it
 *We are running dev server on port 8080 just for consistency with our docker setup.*
 
 ## API usage
+
+
+Please note that on local dev you will see a nice html page with the json response embedded in it , to disable this just
+ add a query string like `?format=json` in your request, this will not bee needed in production. 
+ 
+Example: `http://127.0.0.1:8080/api/recipe/1/?format=json`
 
 You can use `httpie` from your terminal 
 
