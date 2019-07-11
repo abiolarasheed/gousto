@@ -13,7 +13,7 @@ docker build -t gousto:v1 .
 Then run the app with the required environment variables `SECRET_KEY` && `DJANGO_SETTINGS_MODULE`
 
 ```bash
-docker run -p 8080:8080 -e SECRET_KEY=$SECRET_KEY -e DJANGO_SETTINGS_MODULE=gousto.settings.production gousto:v3
+docker run -p 8080:8080 -e SECRET_KEY=$SECRET_KEY -e DJANGO_SETTINGS_MODULE=gousto.settings.production gousto:v1
 ```
 
 ## Local development on Mac or Linux
