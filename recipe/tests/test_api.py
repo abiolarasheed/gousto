@@ -1,36 +1,14 @@
 # coding: utf-8
-from random import choice, randrange
+from random import randrange
 from typing import Union, List
 
 from django.db.models import QuerySet
-from mixer.backend.django import mixer
-import pytest
 from rest_framework.reverse import reverse
 from rest_framework.test import APIRequestFactory
 
 from recipe.api import RecipeViewSet
 from recipe.models import Recipe
-
-
-@pytest.fixture()
-def factory() -> APIRequestFactory:
-    request = APIRequestFactory()
-    return request
-
-
-@pytest.fixture()
-def recipe(db) -> Recipe:
-    recipe = mixer.blend(Recipe)
-    return recipe
-
-
-@pytest.fixture()
-def recipes(db) -> Union[QuerySet, List[Recipe]]:
-    cuisines = ("asian", "british", "mexican", "italian")
-    recipes = mixer.cycle(25).blend(
-        Recipe, recipe_cuisine=(choice(cuisines) for _ in range(25))
-    )
-    return recipes
+from .fixtures import factory, recipe, recipes
 
 
 def test_recipe_detail_view(recipe: Recipe, factory: APIRequestFactory) -> None:
